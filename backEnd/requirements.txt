@@ -1,2 +1,2 @@
 PyMuPDF
-google-generativeai
+google-genai
