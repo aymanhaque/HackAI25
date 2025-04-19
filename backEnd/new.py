@@ -1,7 +1,7 @@
 import fitz  # PyMuPDF
 
 # Ensure the file path is correct and handle errors
-file_path = "ltimindtree.pdf"
+file_path = "a.pdf"
 
 try:
     # Open the PDF
