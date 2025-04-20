@@ -129,9 +129,7 @@ button:hover {
 
 .upload-button:focus {
   outline: none;
-  ring: 2px;
-  ring-offset: 2px;
-  ring-color: #1d4ed8;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #1d4ed8;
 }
 
 .upload-icon {

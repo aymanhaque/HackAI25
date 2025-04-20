@@ -16,7 +16,7 @@ if not os.path.exists(UPLOAD_FOLDER):
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # Initialize Gemini client
-client = genai.Client(api_key="AIzaSyBtunoQDSmYcWy1YiFGajaF3xJwR1NzjeA")
+client = genai.Client(api_key="Add API Key Here")
 
 # Global variable to store current PDF context
 current_context = ""
