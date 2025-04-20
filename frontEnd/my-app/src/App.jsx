@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './App.css'
 
 function App() {
+  const port = 8000;
   const [messages, setMessages] = useState([])
   const [inputText, setInputText] = useState('')
   const [error, setError] = useState(null)
@@ -17,7 +18,7 @@ function App() {
       formData.append('pdf', file)
 
       try {
-        const response = await fetch('http://127.0.0.1:5000/upload-pdf', {
+        const response = await fetch(`http://127.0.0.1:${port}/upload-pdf`, {
           method: 'POST',
           body: formData,
         })
@@ -58,7 +59,7 @@ function App() {
       setMessages(prev => [...prev, userMessage])
       
       console.log('Sending to backend:', inputText)
-      const response = await fetch('http://127.0.0.1:5000/chat', {
+      const response = await fetch(`http://127.0.0.1:${port}/chat`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -74,8 +75,8 @@ function App() {
       }
       
       // Add bot response to chat
-      setMessages(prev => [...prev, { text: data.response, sender: 'bot' }])
       setInputText('')
+      setMessages(prev => [...prev, { text: data.response, sender: 'bot' }])
     } catch (error) {
       console.error('Error:', error)
       setError(error.message)
@@ -104,9 +105,9 @@ function App() {
       
       <div className="messages">
         {messages.map((message, index) => (
-          <div key={index} className={`message ${message.sender}`}>
-            {message.text}
-          </div>
+          <div key={index} className={`message ${message.sender}`} style={{ whiteSpace: 'pre-wrap' }}>
+          {message.text}
+        </div>
         ))}
       </div>
 
