@@ -5,9 +5,10 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_chroma import Chroma
 from langchain.chains import RetrievalQA
 from langchain_google_genai import ChatGoogleGenerativeAI
-
+from dotenv import load_dotenv
+load_dotenv()
 # Configuration
-GOOGLE_API_KEY = "AIzaSyBtunoQDSmYcWy1YiFGajaF3xJwR1NzjeA"  # Replace with your actual API key
+GOOGLE_API_KEY = os.getenv("GEMINI_KEY")  # Replace with your actual API key
 PDF_PATH = "b.pdf"  # Path to your PDF file
 CHROMA_DB_DIR = "chromaDB"  # Directory to store the vector database
 COLLECTION_NAME = "pdf_collection"  # Name of the ChromaDB collection
