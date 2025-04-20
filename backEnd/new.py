@@ -2,33 +2,75 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 import fitz  # PyMuPDF
 from google import genai
+import os
+from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 CORS(app)  # Enable CORS for all routes
 
+# Configure upload folder
+UPLOAD_FOLDER = 'uploads'
+if not os.path.exists(UPLOAD_FOLDER):
+    os.makedirs(UPLOAD_FOLDER)
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
 # Initialize Gemini client
 client = genai.Client(api_key="AIzaSyBtunoQDSmYcWy1YiFGajaF3xJwR1NzjeA")
 
-# Load PDF content
-file_path = "a.pdf"
-doc = fitz.open(file_path)
-text = "".join(page.get_text() for page in doc)
-context = f"Consider this piece of text: {text}. Use this as context for the conversation."
+# Global variable to store current PDF context
+current_context = ""
+
+@app.route('/upload-pdf', methods=['POST'])
+def upload_pdf():
+    global current_context
+    
+    if 'pdf' not in request.files:
+        return jsonify({'error': 'No file part'}), 400
+        
+    file = request.files['pdf']
+    if file.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+        
+    if file:
+        filename = secure_filename(file.filename)
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        file.save(filepath)
+        
+        try:
+            # Extract text from PDF
+            doc = fitz.open(filepath)
+            text = "".join(page.get_text() for page in doc)
+            current_context = f"Consider this piece of text: {text}. Use this as context for the conversation."
+            
+            return jsonify({
+                'success': True,
+                'message': 'PDF uploaded and processed successfully'
+            })
+            
+        except Exception as e:
+            return jsonify({'error': str(e)}), 500
+            
+    return jsonify({'error': 'Invalid file'}), 400
 
 @app.route('/chat', methods=['POST'])
 def chat():
-    print("Received request") 
+    global current_context
+    
     data = request.json
     user_input = data.get('message')
     
     if not user_input:
         return jsonify({'error': 'No message provided'}), 400
 
+    if not current_context:
+        return jsonify({'error': 'Please upload a PDF first'}), 400
+
     try:
         # Send user input to the Gemini API
         response = client.models.generate_content(
             model="gemini-2.0-flash",
-            contents=f"{context}\nUser: {user_input}\nAssistant:",
+            contents=f"{current_context}\nUser: {user_input}\nAssistant:",
         )
         
         return jsonify({'response': response.text})
