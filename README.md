@@ -21,7 +21,6 @@ FinSight is an AI-powered assistant designed for investors, analysts, and shareh
 ## 📦 Installation
 
 1. **Clone the repo**
-   ```bash
    git clone https://github.com/aymanhaque/HackAI25.git
    python3 backend/new.py
    cd frontend
