@@ -1,0 +1,26 @@
+# 📊 Prism — AI-Powered Financial Report Advisor
+
+FinSight is an AI-powered assistant designed for investors, analysts, and shareholders. It leverages Retrieval-Augmented Generation (RAG), Google Gemini, LangChain, and ChromaDB to make financial reports accessible, understandable, and actionable.
+
+## 🚀 Features
+
+- 🔍 **RAG-based Question Answering**: Ask complex questions about lengthy financial reports and get precise, context-aware answers.
+- 📚 **PDF Document Parsing**: Upload annual reports in PDF format — the app automatically extracts and indexes content.
+- 🧠 **LangChain Integration**: Orchestrates the entire pipeline of document loading, chunking, embedding, and querying.
+- 🤖 **Google Gemini LLM**: Generates high-quality, insightful responses in natural language.
+- 🗂️ **ChromaDB Vector Store**: Efficiently stores and retrieves embedded document chunks for fast contextual answers.
+
+## 🛠️ Tech Stack
+
+- `LangChain` for chaining and orchestration
+- `Google Gemini` for LLM-powered reasoning
+- `ChromaDB` for vector storage and retrieval
+- `PyMuPDF` for PDF parsing
+- `HuggingFace Embeddings` or Gemini-native embedding for document chunk vectorization
+
+## 📦 Installation
+
+1. **Clone the repo**
+   ```bash
+   git clone https://github.com/yourusername/finsight-ai.git
+   cd finsight-ai
