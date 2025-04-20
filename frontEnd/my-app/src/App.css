@@ -1,15 +1,53 @@
+/* Add styles for the entire body */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(
+    to bottom,
+    #1d2f59 0%,
+    #1d2f59 40%,
+    #e3f2fd 60%,
+    #e3f2fd 100%
+  );
+}
+
 .chat-container {
-  max-width: 600px;
+  max-width: 800px;
   margin: 0 auto;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
   padding: 20px;
+}
+
+.header h1 {
+  color: white;
+  margin: 0;
+  font-family: "Palatino", "Palatino Linotype", serif;
+  font-weight: bold;
+  font-size: 3.5rem;
+}
+
+.header img {
+  height: 50px;
+  width: auto;
 }
 
 .messages {
   height: 400px;
   overflow-y: auto;
-  border: 1px solid #ccc;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px 10px 0 0;
   padding: 10px;
-  margin-bottom: 20px;
+  margin: 20px;
+  background-color: white;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 .message {
@@ -30,23 +68,93 @@
 
 form {
   display: flex;
-  gap: 10px;
+  margin: -20px 20px 20px 20px;
 }
 
 input {
   flex: 1;
-  padding: 10px;
+  padding: 15px;
+  border: 1px solid #e0e0e0;
+  border-right: none;
+  border-radius: 0 0 0 10px;
+  font-size: 16px;
 }
 
 button {
-  padding: 10px 20px;
-  background-color: #0066cc;
-  color: white;
-  border: none;
-  border-radius: 5px;
+  padding: 15px 30px;
+  background-color: white;
+  color: #1d2f59;
+  border: 1px solid #e0e0e0;
+  border-left: none;
+  border-radius: 0 0 10px 0;
   cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
 }
 
 button:hover {
-  background-color: #0052a3;
+  background-color: #e3f2fd;
+}
+
+.file-upload {
+  margin: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-upload input[type="file"] {
+  display: none;
+}
+
+.upload-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1d2f59;
+  background-color: white;
+  border: 1px solid rgba(229, 231, 235, 0.8);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.upload-button:hover {
+  background-color: #f3f4f6;
+  color: #1d4ed8;
+  border-color: #e5e7eb;
+}
+
+.upload-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #fff, 0 0 0 4px #1d4ed8;
+}
+
+.upload-icon {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+}
+
+.file-name {
+  color: white;
+  font-size: 0.9em;
+}
+
+.message.system {
+  background-color: rgba(255,255,255,0.1);
+  color: white;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.error-message {
+  color: #ff6b6b;
+  background-color: rgba(255,107,107,0.1);
+  padding: 10px;
+  margin: 10px 20px;
+  border-radius: 5px;
+  text-align: center;
 } 
