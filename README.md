@@ -16,7 +16,7 @@ FinSight is an AI-powered assistant designed for investors, analysts, and shareh
 - `Google Gemini` for LLM-powered reasoning
 - `ChromaDB` for vector storage and retrieval
 - `PyMuPDF` for PDF parsing
-- `HuggingFace Embeddings` or Gemini-native embedding for document chunk vectorization
+- `HuggingFace Embeddings` for document chunk vectorization
 
 ## 📦 Installation
 
