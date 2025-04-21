@@ -28,7 +28,7 @@ FinSight is an AI-powered assistant designed for investors, analysts, and shareh
    python3 backend/new.py
 3. On a different terminal:
 4. ```bash
-      cd HackAI25
-      cd frontend/my-app
-      npm install
-      npm run dev
+   cd HackAI25
+   cd frontend/my-app
+   npm install
+   npm run dev
