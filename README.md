@@ -1,6 +1,6 @@
 # 📊 Prism — AI-Powered Financial Report Advisor
 
-FinSight is an AI-powered assistant designed for investors, analysts, and shareholders. It leverages Retrieval-Augmented Generation (RAG), Google Gemini, LangChain, and ChromaDB to make financial reports accessible, understandable, and actionable.
+PRISM is an AI-powered assistant designed for investors, analysts, and shareholders. It leverages Retrieval-Augmented Generation (RAG), Google Gemini, LangChain, and ChromaDB to make financial reports accessible, understandable, and actionable.
 
 ## 🚀 Features
 
